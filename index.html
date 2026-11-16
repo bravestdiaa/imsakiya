@@ -389,8 +389,8 @@ document.getElementById('tb').addEventListener('click',e=>{const tr=e.target.clo
 const REDUCED=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 function logoPicture(replay){
   const r=replay?('?r='+Date.now()):'';
-  if(REDUCED) return '<img src="media/club_logo_720.png" width="720" height="600" alt="النادي البحري للنيابة الإدارية">';
-  return '<picture><source srcset="media/club_logo_anim.webp'+r+'" type="image/webp"><source srcset="media/club_logo_anim.apng'+r+'" type="image/apng"><img src="media/club_logo_720.png" width="720" height="600" alt="النادي البحري للنيابة الإدارية"></picture>';
+  if(REDUCED) return '<img src="media/club_logo_720_white.png" width="720" height="600" alt="النادي البحري للنيابة الإدارية">';
+  return '<picture><source srcset="media/club_logo_anim_white.webp'+r+'" type="image/webp"><source srcset="media/club_logo_anim_white.apng'+r+'" type="image/apng"><img src="media/club_logo_720_white.png" width="720" height="600" alt="النادي البحري للنيابة الإدارية"></picture>';
 }
 let introTimer=null;
 function hideIntro(){ clearTimeout(introTimer); document.getElementById('intro').classList.add('hide'); try{sessionStorage.setItem('introSeen','1');}catch(e){} }

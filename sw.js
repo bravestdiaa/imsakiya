@@ -1,5 +1,5 @@
-const C='imsakiya-v3';
-const FILES=['./','./index.html','./manifest.webmanifest','./media/club_logo_720.png','./media/club_logo_anim.webp','./media/club_logo_anim.apng','./icons/icon-192.png','./icons/icon-512.png','./icons/apple-touch-icon.png'];
+const C='imsakiya-v4';
+const FILES=['./','./index.html','./manifest.webmanifest','./media/club_logo_720.png','./media/club_logo_720_white.png','./media/club_logo_anim_white.webp','./media/club_logo_anim_white.apng','./icons/icon-192.png','./icons/icon-512.png','./icons/apple-touch-icon.png'];
 const KEEP=new Set([C]);
 
 function isFontUrl(u){return u.hostname==='fonts.googleapis.com'||u.hostname==='fonts.gstatic.com';}
