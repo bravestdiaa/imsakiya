@@ -50,6 +50,12 @@ body::before{
 #intro .intro-stack picture{position:relative;display:block;width:fit-content;margin-inline:auto}
 #intro .medal img{width:100%;height:auto;display:block;
   filter:drop-shadow(0 10px 22px rgba(0,0,0,.35)) drop-shadow(0 0 16px rgba(241,217,160,.22))}
+#intro .logo-anim{position:relative;width:100%;aspect-ratio:1;
+  filter:drop-shadow(0 10px 22px rgba(0,0,0,.35)) drop-shadow(0 0 16px rgba(241,217,160,.22))}
+#intro .logo-anim picture.ly{position:absolute;inset:0;display:block;width:100%;height:100%;margin:0;opacity:0}
+#intro .logo-anim .ly img{width:100%;height:100%;object-fit:contain;filter:none;display:block}
+#intro .ly-sun{z-index:1}#intro .ly-wheel{z-index:2}#intro .ly-waves{z-index:3}
+#intro .ly-emblem{z-index:4}#intro .ly-stars{z-index:5}#intro .ly-text{z-index:6}#intro .ly-full{z-index:7}
 #intro .itxt{margin-top:calc(var(--logo) * -0.155);width:100%;display:flex;justify-content:center}
 #intro .itxt img{width:min(86vw,380px);height:auto;display:block;filter:drop-shadow(0 3px 6px rgba(0,0,0,.45)) drop-shadow(0 1px 0 rgba(40,30,0,.25))}
 #intro .div-name{width:min(70vw,420px);aspect-ratio:400/24;height:auto;margin-top:4px;opacity:0}
@@ -68,16 +74,27 @@ body::before{
 #intro .g3{width:100%;display:flex;justify-content:center}
 #intro .g3 img{width:min(78vw,340px);height:auto;display:block;filter:drop-shadow(0 2px 10px rgba(0,0,0,.28))}
 #intro .medal,#intro .itxt,#intro .div-name,#intro .g1,#intro .g2,#intro .g4,#intro .g3{opacity:0}
-#intro.play .medal{animation:logoIn 1.15s ease both}
-#intro.play .itxt{animation:fadeUp .9s .55s ease both}
-#intro.play .div-name{animation:fadeUp .8s 1.25s ease both}
-#intro.play .g1{animation:fadeUp .9s 2.15s ease both}
-#intro.play .g2{animation:fadeUp 1.05s 3.15s ease both}
-#intro.play .g4{animation:fadeUp .9s 4.15s ease both}
-#intro.play .g3{animation:fadeUp 1s 5.2s ease both}
-#intro.play .div-rtl{animation:drawRtl 1.2s 5s ease-out both}
-#intro.play .div-ltr{animation:drawLtr 1.2s 5.35s ease-out both}
-@keyframes logoIn{from{transform:scale(.88);opacity:0}to{transform:scale(1);opacity:1}}
+#intro.play .medal{opacity:1;animation:none}
+#intro.play .ly-waves{animation:revealLtr 1.2s 0s ease-out both}
+#intro.play .ly-wheel{animation:wheelIn 1.2s 1.05s cubic-bezier(.2,1.35,.3,1) both}
+#intro.play .ly-emblem{animation:dropIn 1.1s 2.2s cubic-bezier(.22,.8,.2,1) both}
+#intro.play .ly-stars{animation:starPop .8s 3.2s cubic-bezier(.2,1.55,.3,1) both}
+#intro.play .ly-sun{animation:revealLtr 1.5s 3.9s ease-out both}
+#intro.play .ly-text{animation:fadeUp .9s 4.15s ease both}
+#intro.play .ly-full{animation:fadeFull .6s 5.2s ease both}
+#intro.play .itxt{animation:fadeUp .9s 5.9s ease both}
+#intro.play .div-name{animation:fadeUp .8s 6.6s ease both}
+#intro.play .g1{animation:fadeUp .9s 7.5s ease both}
+#intro.play .g2{animation:fadeUp 1.05s 8.5s ease both}
+#intro.play .g4{animation:fadeUp .9s 9.5s ease both}
+#intro.play .g3{animation:fadeUp 1s 10.55s ease both}
+#intro.play .div-rtl{animation:drawRtl 1.2s 10.35s ease-out both}
+#intro.play .div-ltr{animation:drawLtr 1.2s 10.7s ease-out both}
+@keyframes revealLtr{from{clip-path:inset(0 100% 0 0);opacity:1}to{clip-path:inset(0 0 0 0);opacity:1}}
+@keyframes wheelIn{from{transform:scale(.18) rotate(-28deg);opacity:0}60%{transform:scale(1.06) rotate(5deg);opacity:1}to{transform:none;opacity:1}}
+@keyframes dropIn{from{transform:translateY(-42%);opacity:0}to{transform:none;opacity:1}}
+@keyframes starPop{0%{transform:scale(.12);opacity:0}70%{transform:scale(1.22);opacity:1}100%{transform:scale(1);opacity:1}}
+@keyframes fadeFull{from{opacity:0}to{opacity:1}}
 @keyframes fadeUp{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
 @keyframes drawRtl{from{clip-path:inset(0 0 0 100%)}to{clip-path:inset(0 0 0 0)}}
 @keyframes drawLtr{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
@@ -95,6 +112,8 @@ body::before{
   #intro .medal,#intro .itxt,#intro .div-name,#intro .g1,#intro .g2,#intro .g4,#intro .g3,#intro .div-orn,
   #intro.play .medal,#intro.play .itxt,#intro.play .div-name,#intro.play .g1,#intro.play .g2,#intro.play .g4,#intro.play .g3,
   #intro.play .div-rtl,#intro.play .div-ltr{animation:none!important;opacity:1;transform:none;clip-path:inset(0 0 0 0)!important}
+  #intro .logo-anim picture.ly,#intro.play .logo-anim picture.ly{animation:none!important;opacity:0;transform:none;clip-path:none}
+  #intro .logo-anim picture.ly-full,#intro.play .logo-anim picture.ly-full{opacity:1!important}
 }
 
 /* ---------- header ---------- */
@@ -219,10 +238,36 @@ footer .du{font-family:'Amiri',serif;color:var(--muted);font-size:1.05rem;margin
 <div id="intro" aria-hidden="true">
   <div class="intro-stack">
     <div class="medal" id="medal">
-      <picture>
-        <source srcset="media/club_logo_3d_final_white.webp" type="image/webp">
-        <img src="media/club_logo_3d_final_white.png" width="1024" height="1024" alt="النادي البحري للنيابة الإدارية">
-      </picture>
+      <div class="logo-anim" aria-hidden="true">
+        <picture class="ly ly-sun">
+          <source srcset="media/logo_layer_sun.webp" type="image/webp">
+          <img src="media/logo_layer_sun.png" width="1024" height="1024" alt="">
+        </picture>
+        <picture class="ly ly-wheel">
+          <source srcset="media/logo_layer_wheel.webp" type="image/webp">
+          <img src="media/logo_layer_wheel.png" width="1024" height="1024" alt="">
+        </picture>
+        <picture class="ly ly-waves">
+          <source srcset="media/logo_layer_waves.webp" type="image/webp">
+          <img src="media/logo_layer_waves.png" width="1024" height="1024" alt="">
+        </picture>
+        <picture class="ly ly-emblem">
+          <source srcset="media/logo_layer_emblem.webp" type="image/webp">
+          <img src="media/logo_layer_emblem.png" width="1024" height="1024" alt="">
+        </picture>
+        <picture class="ly ly-stars">
+          <source srcset="media/logo_layer_stars.webp" type="image/webp">
+          <img src="media/logo_layer_stars.png" width="1024" height="1024" alt="">
+        </picture>
+        <picture class="ly ly-text">
+          <source srcset="media/logo_layer_text.webp" type="image/webp">
+          <img src="media/logo_layer_text.png" width="1024" height="1024" alt="">
+        </picture>
+        <picture class="ly ly-full">
+          <source srcset="media/club_logo_3d_final_white.webp" type="image/webp">
+          <img src="media/club_logo_3d_final_white.png" width="1024" height="1024" alt="النادي البحري للنيابة الإدارية">
+        </picture>
+      </div>
     </div>
     <div class="itxt">
       <picture>
@@ -515,7 +560,7 @@ document.getElementById('prevD').onclick=()=>{if(sel>0){sel--;renderDay();}};
 document.getElementById('nextD').onclick=()=>{if(sel<29){sel++;renderDay();}};
 document.getElementById('tb').addEventListener('click',e=>{const tr=e.target.closest('tr');if(!tr)return;sel=+tr.dataset.i;renderDay();show('today');window.scrollTo({top:0,behavior:'smooth'});});
 
-// المقدمة: الشعار يظهر بلطف ثم الجمل بالتتابع، وتتقفل وحدها
+// المقدمة: الشعار يتجمّع طبقة طبقة ثم الجمل بالتتابع، وتتقفل وحدها
 const REDUCED=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 let introTimer=null;
 function hideIntro(){ clearTimeout(introTimer); document.getElementById('intro').classList.add('hide'); try{sessionStorage.setItem('introSeen','1');}catch(e){} }
@@ -524,7 +569,7 @@ function showIntro(){
   box.classList.remove('hidden','hide','play');
   void box.offsetWidth;
   box.classList.add('play');
-  clearTimeout(introTimer); introTimer=setTimeout(hideIntro,REDUCED?2500:11000);
+  clearTimeout(introTimer); introTimer=setTimeout(hideIntro,REDUCED?2500:14000);
 }
 document.getElementById('intro').addEventListener('click',()=>hideIntro());
 document.getElementById('clubLogo').addEventListener('click',()=>showIntro());

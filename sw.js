@@ -1,5 +1,5 @@
-const C='imsakiya-v10';
-const FILES=['./','./index.html','./manifest.webmanifest','./media/club_logo_720.png','./media/club_logo_3d_final_white.webp','./media/club_logo_3d_final_white.png','./media/club_name_gold.webp','./media/club_name_gold.png','./media/ramadan_mubarak_gold.webp','./media/ramadan_mubarak_gold.png','./media/kul_aam_gold.webp','./media/kul_aam_gold.png','./icons/icon-192.png','./icons/icon-512.png','./icons/apple-touch-icon.png'];
+const C='imsakiya-v11';
+const FILES=['./','./index.html','./manifest.webmanifest','./media/club_logo_720.png','./media/club_logo_3d_final_white.webp','./media/club_logo_3d_final_white.png','./media/logo_layer_sun.webp','./media/logo_layer_sun.png','./media/logo_layer_wheel.webp','./media/logo_layer_wheel.png','./media/logo_layer_waves.webp','./media/logo_layer_waves.png','./media/logo_layer_emblem.webp','./media/logo_layer_emblem.png','./media/logo_layer_stars.webp','./media/logo_layer_stars.png','./media/logo_layer_text.webp','./media/logo_layer_text.png','./media/club_name_gold.webp','./media/club_name_gold.png','./media/ramadan_mubarak_gold.webp','./media/ramadan_mubarak_gold.png','./media/kul_aam_gold.webp','./media/kul_aam_gold.png','./icons/icon-192.png','./icons/icon-512.png','./icons/apple-touch-icon.png'];
 const KEEP=new Set([C]);
 
 function isFontUrl(u){return u.hostname==='fonts.googleapis.com'||u.hostname==='fonts.gstatic.com';}
