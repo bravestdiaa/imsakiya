@@ -1,4 +1,4 @@
-const C='imsakiya-v12';
+const C='imsakiya-v13';
 const FILES=['./','./index.html','./manifest.webmanifest','./media/club_logo_720.png','./media/club_logo_720_white.png','./media/club_logo_anim_white.webp','./media/club_logo_anim_white.apng','./media/club_name_gold.webp','./media/club_name_gold.png','./media/ramadan_mubarak_gold.webp','./media/ramadan_mubarak_gold.png','./media/kul_aam_gold.webp','./media/kul_aam_gold.png','./icons/icon-192.png','./icons/icon-512.png','./icons/apple-touch-icon.png'];
 const KEEP=new Set([C]);
 

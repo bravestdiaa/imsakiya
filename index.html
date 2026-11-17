@@ -70,14 +70,14 @@ body::before{
 #intro .g3 img{width:min(78vw,340px);height:auto;display:block;filter:drop-shadow(0 2px 10px rgba(0,0,0,.28))}
 #intro .medal,#intro .itxt,#intro .div-name,#intro .g1,#intro .g2,#intro .g4,#intro .g3{opacity:0}
 #intro.play .medal{opacity:1;animation:none}
-#intro.play .itxt{animation:fadeUp .9s 7s ease both}
-#intro.play .div-name{animation:fadeUp .8s 7.7s ease both}
-#intro.play .g1{animation:fadeUp .9s 8.6s ease both}
-#intro.play .g2{animation:fadeUp 1.05s 9.6s ease both}
-#intro.play .g4{animation:fadeUp .9s 10.6s ease both}
-#intro.play .g3{animation:fadeUp 1s 11.65s ease both}
-#intro.play .div-rtl{animation:drawRtl 1.2s 11.45s ease-out both}
-#intro.play .div-ltr{animation:drawLtr 1.2s 11.8s ease-out both}
+#intro.play .itxt{animation:fadeUp .9s 5.25s ease both}
+#intro.play .div-name{animation:fadeUp .8s 5.25s ease both}
+#intro.play .g1{animation:fadeUp .9s 6.5s ease both}
+#intro.play .g2{animation:fadeUp 1.05s 6.5s ease both}
+#intro.play .g4{animation:fadeUp .9s 6.5s ease both}
+#intro.play .g3{animation:fadeUp 1s 7.8s ease both}
+#intro.play .div-rtl{animation:drawRtl 1.2s 7.8s ease-out both}
+#intro.play .div-ltr{animation:drawLtr 1.2s 7.8s ease-out both}
 @keyframes fadeUp{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
 @keyframes drawRtl{from{clip-path:inset(0 0 0 100%)}to{clip-path:inset(0 0 0 0)}}
 @keyframes drawLtr{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
@@ -525,7 +525,7 @@ function showIntro(replay){
   box.classList.remove('hidden','hide','play');
   void box.offsetWidth;
   box.classList.add('play');
-  clearTimeout(introTimer); introTimer=setTimeout(hideIntro,REDUCED?2500:14000);
+  clearTimeout(introTimer); introTimer=setTimeout(hideIntro,REDUCED?2500:11000);
 }
 document.getElementById('intro').addEventListener('click',()=>hideIntro());
 document.getElementById('clubLogo').addEventListener('click',()=>showIntro(true));
