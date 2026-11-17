@@ -38,22 +38,64 @@ body::before{
 .wrap{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:0 14px calc(28px + env(safe-area-inset-bottom))}
 
 /* ---------- intro ---------- */
-#intro{position:fixed;inset:0;z-index:100;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:0 4vw;
-  background:radial-gradient(520px 420px at 50% 42%,#123f57 0%,#0b2a42 38%,#071a2b 75%);transition:opacity 1s ease,visibility 1s}
+#intro{--logo:min(90vw,435px,48vh);position:fixed;inset:0;z-index:100;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:calc(6px + env(safe-area-inset-top)) 5vw calc(8px + env(safe-area-inset-bottom));
+  background:radial-gradient(560px 460px at 50% 22%,#123f57 0%,#0b2a42 38%,#071a2b 75%);transition:opacity 1s ease,visibility 1s}
 #intro.hide{opacity:0;visibility:hidden}
-#intro .medal{position:relative;width:min(96vw,460px);aspect-ratio:720/600;display:flex;align-items:center;justify-content:center}
-#intro .medal::before{content:"";position:absolute;inset:-6% -4%;border-radius:50%;pointer-events:none;
-  background:radial-gradient(closest-side,rgba(241,217,160,.16),rgba(241,217,160,.06) 55%,transparent 100%)}
+#intro .intro-stack{width:100%;max-width:620px;display:flex;flex-direction:column;align-items:center}
+#intro .medal{position:relative;width:var(--logo);aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+#intro .medal::before{content:"";position:absolute;inset:-8%;border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(241,217,160,.2),rgba(241,217,160,.07) 52%,transparent 100%)}
 #intro picture,#intro .medal>img{position:relative;display:block;width:100%}
+#intro .intro-stack picture{position:relative;display:block;width:fit-content;margin-inline:auto}
 #intro .medal img{width:100%;height:auto;display:block;
-  filter:drop-shadow(0 0 1.2px rgba(255,250,235,.95)) drop-shadow(0 0 6px rgba(255,244,214,.35)) brightness(1.08)}
-#intro .itxt{text-align:center;animation:fadeUp 1.6s 1.8s ease both;margin-top:-4px}
-#intro .itxt .n{font-family:'Amiri',serif;font-size:clamp(1.9rem,9vw,2.8rem);line-height:1.6;font-weight:700;padding:0 6px;
-  background:linear-gradient(180deg,#fff4d2 0%,#ecd08e 45%,#c0924a 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
-  -webkit-text-stroke:.35px rgba(241,217,160,.55);filter:drop-shadow(0 2px 10px rgba(212,175,106,.28))}
-@keyframes medalIn{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
-@keyframes logoIn{from{transform:scale(.9);opacity:0;filter:blur(4px)}to{transform:scale(1);opacity:1;filter:none}}
-@keyframes fadeUp{from{transform:translateY(10px);opacity:0}to{transform:none;opacity:1}}
+  filter:drop-shadow(0 10px 22px rgba(0,0,0,.35)) drop-shadow(0 0 16px rgba(241,217,160,.22))}
+#intro .itxt{margin-top:calc(var(--logo) * -0.155);width:100%;display:flex;justify-content:center}
+#intro .itxt img{width:min(86vw,380px);height:auto;display:block;filter:drop-shadow(0 3px 6px rgba(0,0,0,.45)) drop-shadow(0 1px 0 rgba(40,30,0,.25))}
+#intro .div-name{width:min(70vw,420px);aspect-ratio:400/24;height:auto;margin-top:4px;opacity:0}
+#intro .div-name svg,#intro .div-orn svg{display:block;width:100%;height:100%;overflow:visible}
+#intro .g1{margin-top:clamp(18px,3vh,28px);font-family:'Amiri',serif;font-size:clamp(1.28rem,5.2vw,1.7rem);font-weight:400;color:#e9e3d3;line-height:1.6;text-align:center}
+#intro .g2{margin-top:clamp(2px,.6vh,6px);width:100%;display:flex;justify-content:center}
+#intro .g2 img{width:min(86vw,380px);height:auto;display:block;filter:drop-shadow(0 2px 12px rgba(0,0,0,.28))}
+#intro .g4{margin-top:4px;font-family:'Amiri',serif;font-size:clamp(2.3rem,9.2vw,3.1rem);font-weight:700;line-height:1.3;letter-spacing:.06em;text-align:center;
+  background:linear-gradient(180deg,#fbe8a8 0%,#f1d56a 28%,#d4a42e 62%,#b8861a 86%,#f3e0a0 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  filter:drop-shadow(0 3px 8px rgba(0,0,0,.4))}
+#intro .g3-block{width:100%;display:flex;flex-direction:column;align-items:center;margin-top:clamp(2px,.5vh,6px);gap:clamp(2px,.5vh,6px)}
+#intro .div-orn{width:min(70vw,420px);aspect-ratio:400/28;height:auto;overflow:hidden}
+#intro .div-rtl{clip-path:inset(0 0 0 100%)}
+#intro .div-ltr{clip-path:inset(0 100% 0 0)}
+#intro .g3{width:100%;display:flex;justify-content:center}
+#intro .g3 img{width:min(78vw,340px);height:auto;display:block;filter:drop-shadow(0 2px 10px rgba(0,0,0,.28))}
+#intro .medal,#intro .itxt,#intro .div-name,#intro .g1,#intro .g2,#intro .g4,#intro .g3{opacity:0}
+#intro.play .medal{animation:logoIn 1.15s ease both}
+#intro.play .itxt{animation:fadeUp .9s .55s ease both}
+#intro.play .div-name{animation:fadeUp .8s 1.25s ease both}
+#intro.play .g1{animation:fadeUp .9s 2.15s ease both}
+#intro.play .g2{animation:fadeUp 1.05s 3.15s ease both}
+#intro.play .g4{animation:fadeUp .9s 4.15s ease both}
+#intro.play .g3{animation:fadeUp 1s 5.2s ease both}
+#intro.play .div-rtl{animation:drawRtl 1.2s 5s ease-out both}
+#intro.play .div-ltr{animation:drawLtr 1.2s 5.35s ease-out both}
+@keyframes logoIn{from{transform:scale(.88);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes fadeUp{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
+@keyframes drawRtl{from{clip-path:inset(0 0 0 100%)}to{clip-path:inset(0 0 0 0)}}
+@keyframes drawLtr{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@media (max-height:840px) and (min-width:700px){
+  #intro{--logo:min(90vw,420px,47vh);padding:0 5vw}
+  #intro .g1{margin-top:8px}
+  #intro .g3-block{margin-top:0;gap:0}
+  #intro .div-name{margin-top:0;width:min(44vw,320px)}
+  #intro .div-orn{width:min(44vw,320px)}
+  #intro .itxt img{width:min(70vw,360px)}
+  #intro .g2 img{width:min(70vw,360px)}
+  #intro .g3 img{width:min(62vw,320px)}
+}
+@media (prefers-reduced-motion:reduce){
+  #intro .medal,#intro .itxt,#intro .div-name,#intro .g1,#intro .g2,#intro .g4,#intro .g3,#intro .div-orn,
+  #intro.play .medal,#intro.play .itxt,#intro.play .div-name,#intro.play .g1,#intro.play .g2,#intro.play .g4,#intro.play .g3,
+  #intro.play .div-rtl,#intro.play .div-ltr{animation:none!important;opacity:1;transform:none;clip-path:inset(0 0 0 0)!important}
+}
 
 /* ---------- header ---------- */
 header{text-align:center;padding:calc(14px + env(safe-area-inset-top)) 0 6px;position:relative}
@@ -175,8 +217,96 @@ footer .du{font-family:'Amiri',serif;color:var(--muted);font-size:1.05rem;margin
 <body>
 
 <div id="intro" aria-hidden="true">
-  <div class="medal" id="medal"></div>
-  <div class="itxt"><div class="n">النادي البحري للنيابة الإدارية</div></div>
+  <div class="intro-stack">
+    <div class="medal" id="medal">
+      <picture>
+        <source srcset="media/club_logo_3d_final_white.webp" type="image/webp">
+        <img src="media/club_logo_3d_final_white.png" width="1024" height="1024" alt="النادي البحري للنيابة الإدارية">
+      </picture>
+    </div>
+    <div class="itxt">
+      <picture>
+        <source srcset="media/club_name_gold.webp" type="image/webp">
+        <img src="media/club_name_gold.png" width="1866" height="425" alt="النادي البحري للنيابة الإدارية">
+      </picture>
+    </div>
+    <div class="div-name"><svg viewBox="0 0 400 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="dnL" gradientUnits="userSpaceOnUse" x1="18" y1="0" x2="172" y2="0">
+      <stop offset="0" stop-color="#d4af37" stop-opacity="0"/>
+      <stop offset=".18" stop-color="#f3e0a0" stop-opacity="1"/>
+      <stop offset="1" stop-color="#d4af37" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="dnR" gradientUnits="userSpaceOnUse" x1="382" y1="0" x2="228" y2="0">
+      <stop offset="0" stop-color="#d4af37" stop-opacity="0"/>
+      <stop offset=".18" stop-color="#f3e0a0" stop-opacity="1"/>
+      <stop offset="1" stop-color="#d4af37" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect x="18" y="10.7" width="154" height="2.6" rx="1.3" fill="url(#dnL)"/>
+  <rect x="228" y="10.7" width="154" height="2.6" rx="1.3" fill="url(#dnR)"/>
+  <path d="M182 12 L186 8.2 L190 12 L186 15.8 Z" fill="#f3e0a0" stroke="#b8892e" stroke-width=".7"/>
+  <path d="M200 4.2 L204.2 10.6 L211 12 L204.2 13.4 L200 19.8 L195.8 13.4 L189 12 L195.8 10.6 Z" fill="#f1d56a" stroke="#f8e7b0" stroke-width=".7"/>
+  <path d="M200 8.8 L202.5 12 L200 15.2 L197.5 12 Z" fill="#fff6d0"/>
+  <path d="M210 12 L214 8.2 L218 12 L214 15.8 Z" fill="#f3e0a0" stroke="#b8892e" stroke-width=".7"/>
+</svg></div>
+    <div class="g1">يهنئكم بحلول</div>
+    <div class="g2">
+      <picture>
+        <source srcset="media/ramadan_mubarak_gold.webp" type="image/webp">
+        <img src="media/ramadan_mubarak_gold.png" width="2493" height="661" alt="شهر رمضان المبارك">
+      </picture>
+    </div>
+    <div class="g4">١٤٤٨ هـ</div>
+    <div class="g3-block">
+      <div class="div-orn div-rtl"><svg viewBox="0 0 400 28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="otL" gradientUnits="userSpaceOnUse" x1="16" y1="0" x2="166" y2="0">
+      <stop offset="0" stop-color="#d4af37" stop-opacity="0"/>
+      <stop offset=".18" stop-color="#f3e0a0" stop-opacity="1"/>
+      <stop offset="1" stop-color="#d4af37" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="otR" gradientUnits="userSpaceOnUse" x1="384" y1="0" x2="234" y2="0">
+      <stop offset="0" stop-color="#d4af37" stop-opacity="0"/>
+      <stop offset=".18" stop-color="#f3e0a0" stop-opacity="1"/>
+      <stop offset="1" stop-color="#d4af37" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect x="16" y="12.6" width="150" height="2.8" rx="1.4" fill="url(#otL)"/>
+  <rect x="234" y="12.6" width="150" height="2.8" rx="1.4" fill="url(#otR)"/>
+  <path d="M174 14 L178.4 9.6 L182.8 14 L178.4 18.4 Z" fill="#f3e0a0" stroke="#b8892e" stroke-width=".7"/>
+  <path d="M217.2 14 L221.6 9.6 L226 14 L221.6 18.4 Z" fill="#f3e0a0" stroke="#b8892e" stroke-width=".7"/>
+  <path d="M200 3.2 L204 11.2 L212.2 14 L204 16.8 L200 24.8 L196 16.8 L187.8 14 L196 11.2 Z" fill="#f1d56a" stroke="#f8e7b0" stroke-width=".8"/>
+  <path d="M200 9.4 L202.8 14 L200 18.6 L197.2 14 Z" fill="#fff6d0"/>
+</svg></div>
+      <div class="g3">
+        <picture>
+          <source srcset="media/kul_aam_gold.webp" type="image/webp">
+          <img src="media/kul_aam_gold.png" width="1209" height="323" alt="كل عام وأنتم بخير">
+        </picture>
+      </div>
+      <div class="div-orn div-ltr"><svg viewBox="0 0 400 28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="obL" gradientUnits="userSpaceOnUse" x1="16" y1="0" x2="166" y2="0">
+      <stop offset="0" stop-color="#d4af37" stop-opacity="0"/>
+      <stop offset=".18" stop-color="#f3e0a0" stop-opacity="1"/>
+      <stop offset="1" stop-color="#d4af37" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="obR" gradientUnits="userSpaceOnUse" x1="384" y1="0" x2="234" y2="0">
+      <stop offset="0" stop-color="#d4af37" stop-opacity="0"/>
+      <stop offset=".18" stop-color="#f3e0a0" stop-opacity="1"/>
+      <stop offset="1" stop-color="#d4af37" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <rect x="16" y="12.6" width="150" height="2.8" rx="1.4" fill="url(#obL)"/>
+  <rect x="234" y="12.6" width="150" height="2.8" rx="1.4" fill="url(#obR)"/>
+  <path d="M174 14 L178.4 9.6 L182.8 14 L178.4 18.4 Z" fill="#f3e0a0" stroke="#b8892e" stroke-width=".7"/>
+  <path d="M217.2 14 L221.6 9.6 L226 14 L221.6 18.4 Z" fill="#f3e0a0" stroke="#b8892e" stroke-width=".7"/>
+  <path d="M200 3.2 L204 11.2 L212.2 14 L204 16.8 L200 24.8 L196 16.8 L187.8 14 L196 11.2 Z" fill="#f1d56a" stroke="#f8e7b0" stroke-width=".8"/>
+  <path d="M200 9.4 L202.8 14 L200 18.6 L197.2 14 Z" fill="#fff6d0"/>
+</svg></div>
+    </div>
+  </div>
 </div>
 
 <div class="wrap">
@@ -385,27 +515,23 @@ document.getElementById('prevD').onclick=()=>{if(sel>0){sel--;renderDay();}};
 document.getElementById('nextD').onclick=()=>{if(sel<29){sel++;renderDay();}};
 document.getElementById('tb').addEventListener('click',e=>{const tr=e.target.closest('tr');if(!tr)return;sel=+tr.dataset.i;renderDay();show('today');window.scrollTo({top:0,behavior:'smooth'});});
 
-// المقدمة: الشعار المتحرك مرة واحدة ثم يثبت على الشعار كامل
+// المقدمة: الشعار يظهر بلطف ثم الجمل بالتتابع، وتتقفل وحدها
 const REDUCED=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-function logoPicture(replay){
-  const r=replay?('?r='+Date.now()):'';
-  if(REDUCED) return '<img src="media/club_logo_720_white.png" width="720" height="600" alt="النادي البحري للنيابة الإدارية">';
-  return '<picture><source srcset="media/club_logo_anim_white.webp'+r+'" type="image/webp"><source srcset="media/club_logo_anim_white.apng'+r+'" type="image/apng"><img src="media/club_logo_720_white.png" width="720" height="600" alt="النادي البحري للنيابة الإدارية"></picture>';
-}
 let introTimer=null;
 function hideIntro(){ clearTimeout(introTimer); document.getElementById('intro').classList.add('hide'); try{sessionStorage.setItem('introSeen','1');}catch(e){} }
-function showIntro(replay){
+function showIntro(){
   const box=document.getElementById('intro');
-  document.getElementById('medal').innerHTML=logoPicture(replay);
-  box.classList.remove('hidden','hide');
-  clearTimeout(introTimer); introTimer=setTimeout(hideIntro,REDUCED?2500:10000);
+  box.classList.remove('hidden','hide','play');
+  void box.offsetWidth;
+  box.classList.add('play');
+  clearTimeout(introTimer); introTimer=setTimeout(hideIntro,REDUCED?2500:11000);
 }
 document.getElementById('intro').addEventListener('click',()=>hideIntro());
-document.getElementById('clubLogo').addEventListener('click',()=>showIntro(true));
+document.getElementById('clubLogo').addEventListener('click',()=>showIntro());
 (function(){
   let seen=false; try{seen=sessionStorage.getItem('introSeen')==='1';}catch(e){}
   if(new URLSearchParams(location.search).has('nointro')||seen) document.getElementById('intro').classList.add('hidden');
-  else showIntro(false);
+  else showIntro();
 })();
 
 tick(); setInterval(tick,1000);
